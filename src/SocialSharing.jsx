@@ -18,10 +18,11 @@ const SocialSharing = ({
   bannerPosition = DEFAULT_POSITIONS,
   logoSize = DEFAULT_LOGO_SIZE,
   buttonSize = DEFAULT_BUTTON_SIZE,
+  asContent = false,
 }) => {
   const [currentUrl, setCurrentUrl] = useState('');
-  const [display, setDisplay] = useState(true);
   const pathName = location?.pathname;
+  const [display, setDisplay] = useState(Boolean(pathName));
 
   useEffect(() => {
     setCurrentUrl(window.location.href);
@@ -52,13 +53,13 @@ const SocialSharing = ({
       {display && (
         <div
           style={
-            isMobile ? bannerPosition['mobile'] : bannerPosition['desktop']
+            asContent ? undefined : isMobile ? bannerPosition['mobile'] : bannerPosition['desktop']
           }
         >
           <ul
             className={
-              isMobile
-                ? 'horizontal volto-social-sharing'
+              asContent ? 'horizontal-content volto-social-sharing'
+              : isMobile ? 'horizontal volto-social-sharing'
                 : 'vertical volto-social-sharing'
             }
           >

@@ -45,3 +45,14 @@ li:hover .fa-icon {
   text-align: center;
   transform: translate(-50%, -50%);
 }
+
+.horizontal-content {
+  padding-left: 1.3em;
+  display: flex;
+  gap: 0.8em;
+  flex-wrap: wrap;
+}
+.horizontal-content li {
+  padding: 0.5em;
+  border-radius:50%;
+}
