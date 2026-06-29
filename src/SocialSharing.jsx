@@ -70,7 +70,7 @@ const SocialSharing = ({
                   <li
                     className={`volto-social-${social.id}`}
                     key={social.id}
-                    style={{ backgroundColor: social.color }}
+                    style={ asContent ? null : { backgroundColor: social.color }}
                   >
                     <div
                       style={{
