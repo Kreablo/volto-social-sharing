@@ -11,6 +11,14 @@ import {
 import './SocialSharing.css';
 import './fontawesome';
 import { SOCIAL_INTERFACE, LOGO_SIZE_INTERFACE } from './interfaces';
+import { defineMessages, useIntl } from 'react-intl';
+
+const messages = defineMessages({
+  sendToMedia: {
+    id: 'volto-social-sharing-send-to-media',
+    defaultMessage: 'Send to {media}',
+  },
+});
 
 const SocialSharing = ({
   location,
@@ -23,6 +31,7 @@ const SocialSharing = ({
   const [currentUrl, setCurrentUrl] = useState('');
   const pathName = location?.pathname;
   const [display, setDisplay] = useState(Boolean(pathName));
+  const intl = useIntl();
 
   useEffect(() => {
     setCurrentUrl(window.location.href);
@@ -82,7 +91,7 @@ const SocialSharing = ({
                     >
                       <a
                         target="_blank"
-                        title={`Send to ${social.name}`}
+                        title={intl.formatMessage(messages.sendToMedia, {media: social.name})}
                         href={`${social.sharing_url}${currentUrl}`}
                         className="fa-icon-position"
                         rel="noreferrer"
