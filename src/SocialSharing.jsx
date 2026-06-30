@@ -105,8 +105,8 @@ const SocialSharing = ({
   );
 };
 
-SocialSharing.prototype = {
-  socialElements: SOCIAL_INTERFACE,
+SocialSharing.propTypes = {
+  socialElements: PropTypes.arrayOf(SOCIAL_INTERFACE),
   bannerPosition: PropTypes.object,
   logoSize: LOGO_SIZE_INTERFACE,
   buttonSize: PropTypes.string,
