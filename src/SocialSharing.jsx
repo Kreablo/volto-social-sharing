@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { isCmsUi } from '@plone/volto/helpers';
 import PropTypes from 'prop-types';
 import {
   DEFAULT_SOCIAL,
@@ -21,26 +20,19 @@ const messages = defineMessages({
 });
 
 const SocialSharing = ({
-  location,
   socialElements = DEFAULT_SOCIAL,
   bannerPosition = DEFAULT_POSITIONS,
   logoSize = DEFAULT_LOGO_SIZE,
   buttonSize = DEFAULT_BUTTON_SIZE,
   asContent = false,
+  display = true,
 }) => {
   const [currentUrl, setCurrentUrl] = useState('');
-  const pathName = location?.pathname;
-  const [display, setDisplay] = useState(Boolean(pathName));
   const intl = useIntl();
 
   useEffect(() => {
     setCurrentUrl(window.location.href);
   }, []);
-
-  // Disable sharing on non content routes
-  useEffect(() => {
-    pathName && setDisplay(!isCmsUi(pathName));
-  }, [pathName]);
 
   // MOBILE checker
   const [isMobile, setIsMobile] = useState(false);
